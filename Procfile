@@ -1,0 +1,1 @@
+web: gunicorn bruno-luiel-contador:app

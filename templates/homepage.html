@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <script type=text/javascript>
+        function olamundo(){
+            alert("Pesquisa inválida\n para sua pesquisa funcionar corretamento insira:\n9 dígitos para CPF ou 12 digitos para CNPJ");
+            };
+    </script>
+</head>
+<body>
+    <H1>Consulte aqui o dígito verificador do CNPJ ou do CPF</H1>
+    <br>
+    <form method="get" action="/resultado">
+        <div>
+            <label>CNPJ</label>
+            <input type="number" name="CNPJ" id="CNPJ">
+            <button id="submition">Calcular</button>
+            <span style="color:red;" id="resultado" name="digito-verificador-CNPJ">{{digiCnpj}}</span>
+        </div>
+
+        <div>
+            <label>CPF</label>
+            <input type="number" name="CPF" id="CPF">
+            <button id="submition">Calcular</button>
+            <span style="color: red;" id="resultado" name="digito-verificador-CPF">{{digiCpf}}</span>
+        </div>
+    </form>
+</body>
+</html>
