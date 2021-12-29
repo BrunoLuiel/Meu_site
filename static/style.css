@@ -1,0 +1,23 @@
+#Title{
+    font-family: Verdana;
+    color: rgb(61, 59, 59);
+    margin: 70px;
+}
+body{
+    text-align: center;
+    background-color: rgb(211, 211, 211);
+}
+
+.Form, div{
+    font-size: 30px;
+}
+
+.Input_CNPJ{
+    width: 165px;
+    font-size: 20px;
+}
+
+.Input_CPF{
+    width: 125px;
+    font-size: 20px;
+}

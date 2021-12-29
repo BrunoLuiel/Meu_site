@@ -1,6 +1,7 @@
 #https://www.youtube.com/watch?v=K2ejI4z8Mbg&ab_channel=HashtagPrograma%C3%A7%C3%A3o
 from flask import Flask, render_template, request
 import Calculadora as C
+import re
 
 app = Flask(__name__)
 
@@ -12,7 +13,9 @@ def homepage():
 def resultado():
     args = request.args
     pesquisaCNPJ = args["CNPJ"]
+    pesquisaCNPJ = re.sub('[.-/]', '', pesquisaCNPJ)
     pesquisaCPF = args["CPF"]
+    pesquisaCPF = re.sub('[.-/]', '', pesquisaCPF)
     if pesquisaCNPJ != "":
         dv1 = C.Cnpj().calcula_digito_verificador(pesquisaCNPJ, 1)
         dv2 = C.Cnpj().calcula_digito_verificador(pesquisaCNPJ + str(dv1), 2)
@@ -25,6 +28,8 @@ def resultado():
     
     else:
         print('O número dígitado não corresponde a consulta à um CPF ou CNPJ')
+        return render_template('homepage.html', digiCnpj = "", digiCpf = "")
+
 
 if __name__=='__main__':
     app.run(debug=True)

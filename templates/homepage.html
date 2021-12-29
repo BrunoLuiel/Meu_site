@@ -5,26 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <script type=text/javascript>
-        function olamundo(){
-            alert("Pesquisa inválida\n para sua pesquisa funcionar corretamento insira:\n9 dígitos para CPF ou 12 digitos para CNPJ");
-            };
+    <link rel="stylesheet" href="static/style.css">
+    <script>
+        function mascaraCNPJ(){
+            var cnpj = document.getElementById('CNPJ')
+            if (cnpj.value.length == 2 || cnpj.value.length == 6) {
+                cnpj.value += "."
+            } else if(cnpj.value.length == 10) {
+                cnpj.value += "/"
+            }
+            }
+        function mascaraCPF() {
+            var cpf = document.getElementById('CPF')
+            if (cpf.value.length == 3 || cpf.value.length == 7) {
+                cpf.value += "."
+            }
+            }
     </script>
 </head>
 <body>
-    <H1>Consulte aqui o dígito verificador do CNPJ ou do CPF</H1>
+    <h1 id="Title">Consulte aqui o dígito verificador do CNPJ ou do CPF</h1>
     <br>
-    <form method="get" action="/resultado">
+    <form method="get" action="/resultado" class="Form">
         <div>
             <label>CNPJ</label>
-            <input type="number" name="CNPJ" id="CNPJ">
+            <input type="text" name="CNPJ" id="CNPJ" placeholder="00.000.000/0001" pattern="[0-9]{2}.?[0-9]{3}.?[0-9]{3}/?[0-9]{4}" class="Input_CNPJ" maxlength="15" autocomplete="off" onkeyup="mascaraCNPJ()">
             <button id="submition">Calcular</button>
             <span style="color:red;" id="resultado" name="digito-verificador-CNPJ">{{digiCnpj}}</span>
         </div>
 
-        <div>
+        <div class="Input">
             <label>CPF</label>
-            <input type="number" name="CPF" id="CPF">
+            <input id="CPF" type="text" placeholder="000.000.000" name="CPF" class="Input_CPF" maxlength="11" autocomplete="off" onkeyup="mascaraCPF()">
             <button id="submition">Calcular</button>
             <span style="color: red;" id="resultado" name="digito-verificador-CPF">{{digiCpf}}</span>
         </div>
